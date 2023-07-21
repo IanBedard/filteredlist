@@ -1,20 +1,27 @@
 // src/App.js
 import { useState } from "react";
 import { data } from "./data/data-eng.js";
-import {BiListPlus} from 'react-icons/bi'
+import { BiListPlus } from 'react-icons/bi'
 import React from "react";
 import "./App.css";
 import "./bootstrap.css";
 
 export default function App() {
-  //switch button
-const [switchState, setSwitchState] = useState(false);
+  //archive button
+  const [archiveState, setArchiveState] = useState(false);
 
-const handleSwitchChange = () => {
-  setSwitchState((prevState) => !prevState);
-};
+  const handleArchiveChange = () => {
+    setArchiveState((prevState) => !prevState);
+    filterOptions.ARCHIVE = !filterOptions.ARCHIVE
+
+  };
+
+
   //Setting up React component structure
   const [filterOptions, setFilterOptions] = useState({
+    //Topic
+    ARCHIVE: false,
+    //Topic
     CA: true,
     EE: true,
     MA: true,
@@ -90,7 +97,7 @@ const handleSwitchChange = () => {
       id: "BEN",
       name: "Benefits",
     },
-    { 
+    {
       id: "CAL",
       name: "Calendars",
     },
@@ -129,7 +136,7 @@ const handleSwitchChange = () => {
       (filterOptions.S33 && item.Role.toLowerCase().includes("section 33 authorizer")) ||
       (filterOptions.SAO && item.Role.toLowerCase().includes("security access control officer")) ||
       (filterOptions.TK && item.Role.toLowerCase().includes("timekeeper")) ||
-    //Topic
+      //Topic
       (filterOptions.ACT && item.Topic.toLowerCase().includes("acting")) ||
       (filterOptions.APR && item.Topic.toLowerCase().includes("approvals")) ||
       (filterOptions.ARR && item.Topic.toLowerCase().includes("arrears")) ||
@@ -145,7 +152,7 @@ const handleSwitchChange = () => {
   const indexOfLastItem = currentPage * ITEMS_PER_PAGE;
   const indexOfFirstItem = indexOfLastItem - ITEMS_PER_PAGE;
   const currentItems = filteredArray.slice(indexOfFirstItem, indexOfLastItem);
-// set page to paginaton
+  // set page to paginaton
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
@@ -157,124 +164,131 @@ const handleSwitchChange = () => {
       [key]: value,
     });
   };
+  const nothing = '';
+  if (filteredArray.length == 0) {
+    nothing = "Sorry we couldn't find a procedure";
+  }
 
-
+  const handleSetFilters = (value) => {
+  
+    
+     }
   return (
-    <div>
-      <nav className="navbar navbar-expand-lg bg-light" data-bs-theme="light">
-        <div className="container-fluid">
-     
-          
-            <div className="form-floating">
-            
-              <input
-                className="form-control" 
-                type="text"
-                placeholder="Search..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-              />
+    <div className="filter-app container">
+      <div className="row">   
+      <div className="left-panel col-3">
+        <ul className="navbar-nav me-auto">
+          <li className="nav-item dropdown">
+            <a
+              className="nav-link "
+              data-bs-toggle="dropdown"
+
+            >
+              Roles <BiListPlus />
+            </a>
+            <div className="dropdown-menu">
+              <div>
+                {roles.map((role) => {
+
+                  // Filter data for the current role
+                  const filteredDataForRole = filteredArray.filter((item) =>
+                    item.Role && item.Role.toLowerCase().includes(role.name.toLowerCase())
+                  );
+
+                  //console.log("Role:", role.name.toLowerCase());
+                  //console.log("Filtered Data:", filteredDataForRole);
+
+
+
+                  return (
+                    <div key={role.id} className="dropdown-item">
+
+                      <label className="form-check-label">
+
+                        <input
+                          className="form-check-input"
+                          type="checkbox"
+                          checked={filterOptions[role.id]}
+                          onChange={(e) =>
+                            handleCheckboxChange(role.id, e.target.checked)
+                          }
+                        />
+                        {role.name}   <span className="badge bg-primary rounded-pill">{filteredDataForRole.length}</span></label>
+                    </div>
+                  )
+                })}
               </div>
-           
+            </div>
+          </li>
+          <li className="nav-item dropdown">
+            <a
+              className="nav-link"
+              data-bs-toggle="dropdown"
 
-            <ul className="navbar-nav me-auto">
-              <li className="nav-item dropdown">
-                <a
-                  className="nav-link "
-                  data-bs-toggle="dropdown"
-                  
-                >
-                  Roles <BiListPlus/>
-                </a>
-                <div className="dropdown-menu">
-                  <div>
-                    {roles.map((role) => {
+            >
+              Topic  <BiListPlus />
+            </a>
+            <div className="dropdown-menu">
+              <div>
+                {topic.map((topic) => {
 
-        // Filter data for the current role
-        const filteredDataForRole = filteredArray.filter((item) =>
-        item.Role && item.Role.toLowerCase().includes(role.name.toLowerCase())
-      );
-
-      console.log("Role:", role.name.toLowerCase());
-      console.log("Filtered Data:", filteredDataForRole);
+                  // Filter data for the current topic
+                  const filteredDataForTopic = filteredArray.filter((item) =>
+                    item.Topic && item.Topic.toLowerCase().includes(topic.name.toLowerCase())
+                  );
 
 
 
-                      return(
-                      <div key={role.id} className="dropdown-item">
-                    
-                        <label className="form-check-label">
-                         
-                          <input
-                            className="form-check-input"
-                            type="checkbox"
-                            checked={filterOptions[role.id]}
-                            onChange={(e) =>
-                              handleCheckboxChange(role.id, e.target.checked)
-                            }
-                          />
-                        {role.name}   <span class="badge bg-primary rounded-pill">{filteredDataForRole.length}</span></label>
-                      </div>
-                    )})}
-                  </div>
-                </div>
-              </li>
-              <li className="nav-item dropdown">
-                <a
-                  className="nav-link"
-                  data-bs-toggle="dropdown"
-          
-                >
-                  Topic  <BiListPlus/>
-                </a>
-                <div className="dropdown-menu">
-                  <div>
-                  {topic.map((topic) => {
+                  return (
+                    <div key={topic.id} className="dropdown-item">
 
-// Filter data for the current topic
-const filteredDataForTopic = filteredArray.filter((item) =>
-item.Topic && item.Topic.toLowerCase().includes(topic.name.toLowerCase())
-);
+                      <label className="form-check-label">
 
-console.log("Topic:", topic.name.toLowerCase());
-console.log("Filtered Data:", filteredDataForTopic);
-
-
-
-              return(
-              <div key={topic.id} className="dropdown-item">
-            
-                <label className="form-check-label">
-         
-                  <input
-                    className="form-check-input"
-                    type="checkbox"
-                    checked={filterOptions[topic.id]}
-                    onChange={(e) =>
-                      handleCheckboxChange(topic.id, e.target.checked)
-                    }
-                  />
-                        {topic.name}   <span class="badge bg-primary rounded-pill">{filteredDataForTopic.length}</span></label>
+                        <input
+                          className="form-check-input"
+                          type="checkbox"
+                          checked={filterOptions[topic.id]}
+                          onChange={(e) =>
+                            handleCheckboxChange(topic.id, e.target.checked)
+                          }
+                        />
+                        {topic.name}   <span className="badge bg-primary rounded-pill">{filteredDataForTopic.length}</span></label>
+                    </div>
+                  )
+                })}
               </div>
-            )})}
-                  </div>
-                </div>
-              </li>
-              <li className="nav-item">
-              <div className="form-check form-switch">
-                <label className="form-check-label" >
-        <input className="form-check-input" type="checkbox" checked={switchState} onChange={handleSwitchChange} /></label>
-        <span>{switchState ? 'Archived' : 'Live'}</span>
-      </div>
-      </li>
-            </ul>
-          </div>
-       
-      </nav>
+            </div>
+          </li>
+          <li className="nav-item">
+            <div className="form-check form-switch">
+              <label className="form-check-label" >
+                <input className="form-check-input" type="checkbox" checked={archiveState} onChange={handleArchiveChange} /></label>
+              <span>{archiveState ? 'Archived' : 'Live'}</span>
+            </div>
 
+          </li>
+          <li className="nav-item">
+          <button className="btn btn-outline-primary" onClick={()=> handleSetFilters(true)}>Select All</button>
+          <button className="btn btn-outline-danger" onClick={()=> handleSetFilters(false)}>Clear All</button>
+          </li>
+        </ul>
+        </div>
+
+<div className="right-panel col-9">
+      <div className="form-floating">
+
+<input
+  className="form-control"
+  type="text"
+  placeholder="Search..."
+  value={searchQuery}
+  onChange={(e) => setSearchQuery(e.target.value)}
+/>
+</div>
       <div className="board">
         <div className="result">
           <h2>{filteredArray.length}</h2>
+          {nothing}
           <ul>
             {currentItems.map((item, index) => (
               <li key={index}>
@@ -300,6 +314,8 @@ console.log("Filtered Data:", filteredDataForTopic);
           )
         )}
       </div>
+      </div>
+      </div>     
     </div>
   );
 }

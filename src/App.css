@@ -1,17 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
-.board{
-    display: flex;
-    margin: 10px;
-}
-.checkbox{
-    width: 25%;
-    margin: 10px;
-}
-.checkbox label {
-    display: block;
-    margin: 10px;
-}
+
 .result{
     width: 75%;
     margin: 10px;
@@ -38,3 +27,5 @@
   .dropdown-item input{
     margin-right:8px;
   }
+
+ 
