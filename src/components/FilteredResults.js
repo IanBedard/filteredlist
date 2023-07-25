@@ -1,6 +1,6 @@
 // components/FilteredResults.js
 import React from "react";
-import "./resultCard.css"; // Import the CSS file
+import "./resultCard.css";
 
 const ResultCard = ({ item, searchQuery }) => {
   const highlightText = (text, searchQuery) => {
