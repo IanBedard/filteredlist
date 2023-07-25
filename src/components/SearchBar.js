@@ -1,7 +1,6 @@
 // components/SearchBar.js
 import React from 'react';
-import './searchBar.css'; // Import the CSS file
-
+import './searchBar.css'; 
 const SearchBar = ({ searchQuery, setSearchQuery }) => {
 
   return (
