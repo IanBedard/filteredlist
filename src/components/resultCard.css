@@ -1,21 +1,18 @@
 /* resultCard.css */
 
 .result-card {
-    /* Add your regular styles for the result card here */
-  
-    /* Add transition property for smooth hover effect */
+
     transition: background-color 0.3s, box-shadow 0.3s;
   }
   
-  /* Define the styles for the hover effect */
   .result-card:hover {
     background-color: #f0f0f0; /* Change the background color on hover */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle shadow effect on hover */
   }
 
-  /* Add this CSS to your existing CSS file or create a new one */
+
   .highlighted {
-    background-color: #ffc107; /* Yellow color, change it to your desired color */
-    font-weight: bold; /* You can adjust the font-weight as needed */
+    background-color: #ffc107; 
+    font-weight: bold; 
 
   }
