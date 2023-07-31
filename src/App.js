@@ -2,11 +2,14 @@
 import { useState } from "react";
 import { data } from "./data/data-eng";
 import React from "react";
-import "./bootstrap.css";
+import "./theme.css";
+//import "./bootstrap.css";
 import "./App.css";
-import SearchBar from './components/SearchBar.js';
+import SearchBar from "./components/SearchBar.js";
 import FilteredResults from "./components/FilteredResults.js";
-import ChecklistFilters from './components/CheckListFilters';
+import ChecklistFilters from "./components/CheckListFilters";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 export default function App() {
   //archive button
@@ -15,36 +18,33 @@ export default function App() {
   const handleArchiveChange = () => {
     setArchiveState((prevState) => !prevState);
     setFilterOptions({ ...filterOptions, ARCHIVE: !archiveState });
-    console.log("helo")
+    console.log("helo");
   };
- 
 
   //Setting up React component structure
   const [filterOptions, setFilterOptions] = useState({
     //Topic
     ARCHIVE: false,
     //Topic
-    CA: false,
     EE: false,
     MA: false,
-    FI: false,
-    HR: false,
-    S33: false,
-    SAO: false,
-    TK: false,
     //topics
-    ACT: false,
-    APR: false,
-    ARR: false,
-    AUT: false,
-    BEN: false,
-    CAL: false,
-    CEN: false,
-    COD: false,
+    RET: false,
+    UNI: false,
+    EME: false,
+    LEA: false,
+    SAL: false,
+    ENT: false,
+    PEN: false,
+    TAX: false,
+    DED: false,
+    PAY: false,
+    APP: false,
+    MAN: false,
   });
-  
+
   //pagination
-  const ITEMS_PER_PAGE = 8;
+  const ITEMS_PER_PAGE = 16;
   const [currentPage, setCurrentPage] = useState(1);
 
   //state for the search query
@@ -61,23 +61,23 @@ export default function App() {
 
     const matchesFilterOptions =
       //Roles
-      (!filterOptions.CA || item.Role.toLowerCase().includes("compensation advisor")) &&
       (!filterOptions.EE || item.Role.toLowerCase().includes("employee")) &&
       (!filterOptions.MA || item.Role.toLowerCase().includes("manager")) &&
-      (!filterOptions.FI || item.Role.toLowerCase().includes("financial officer")) &&
-      (!filterOptions.HR || item.Role.toLowerCase().includes("human resource")) &&
-      (!filterOptions.S33 || item.Role.toLowerCase().includes("section 33 authorizer")) &&
-      (!filterOptions.SAO || item.Role.toLowerCase().includes("security access control officer")) &&
-      (!filterOptions.TK || item.Role.toLowerCase().includes("timekeeper")) &&
       //Topic
-      (!filterOptions.ACT || item.Topic.toLowerCase().includes("acting")) &&
-      (!filterOptions.APR || item.Topic.toLowerCase().includes("approvals")) &&
-      (!filterOptions.ARR || item.Topic.toLowerCase().includes("arrears")) &&
-      (!filterOptions.AUT || item.Topic.toLowerCase().includes("authorize payroll")) &&
-      (!filterOptions.BEN || item.Topic.toLowerCase().includes("benefits")) &&
-      (!filterOptions.CAL || item.Topic.toLowerCase().includes("calendars")) &&
-      (!filterOptions.CEN || item.Topic.toLowerCase().includes("central index")) &&
-      (!filterOptions.COD || item.Topic.toLowerCase().includes("codes"));
+      (!filterOptions.RET || item.Topic.toLowerCase().includes("retroactive")) &&
+      (!filterOptions.UNI || item.Topic.toLowerCase().includes("union")) &&
+      (!filterOptions.EME || item.Topic.toLowerCase().includes("emergency salary advance and priority payments")) &&
+      (!filterOptions.LEA ||
+        item.Topic.toLowerCase().includes("leave")) &&
+      (!filterOptions.SAL || item.Topic.toLowerCase().includes("salary administration")) &&
+      (!filterOptions.ENT || item.Topic.toLowerCase().includes("entitlements")) &&
+      (!filterOptions.PEN ||
+        item.Topic.toLowerCase().includes("pension and benefits")) &&
+      (!filterOptions.TAX || item.Topic.toLowerCase().includes("tax"))&&
+      (!filterOptions.DED || item.Topic.toLowerCase().includes("deductions"))&&
+      (!filterOptions.PAY || item.Topic.toLowerCase().includes("pay statements"))&&
+      (!filterOptions.APP || item.Topic.toLowerCase().includes("approvals"))&&
+      (!filterOptions.MAN || item.Topic.toLowerCase().includes("manager self service"));
     //return true if item matches checkbox || search
     return matchesSearchQuery && matchesFilterOptions;
   });
@@ -91,14 +91,12 @@ export default function App() {
   };
   //set page to 1 after filtering
   const handleCheckboxChange = (key, value) => {
-    setCurrentPage(1)
+    setCurrentPage(1);
     setFilterOptions({
       ...filterOptions,
       [key]: value,
     });
   };
-
-
 
   const handleSetFilters = (value) => {
     const updatedFilterOptions = { ...filterOptions };
@@ -110,71 +108,95 @@ export default function App() {
     setFilterOptions(updatedFilterOptions);
   };
 
+  //***Paginates */
 
-//***Paginates */
+  // Calculate the total number of pages
+  const totalPages = Math.ceil(filteredArray.length / ITEMS_PER_PAGE);
 
-// Calculate the total number of pages
-const totalPages = Math.ceil(filteredArray.length / ITEMS_PER_PAGE);
+  // Calculate the range of buttons to display
+  const range = 8;
+  let startPage = Math.max(1, currentPage - Math.floor(range / 2));
+  let endPage = Math.min(totalPages, startPage + range - 1);
 
-// Calculate the range of buttons to display
-const range = 8;
-let startPage = Math.max(1, currentPage - Math.floor(range / 2));
-let endPage = Math.min(totalPages, startPage + range - 1);
-
-if (totalPages <= range) {
-  // If the total number of pages is less than or equal to the range,
-  // display all pages from 1 to totalPages.
-  startPage = 1;
-  endPage = totalPages;
-} else {
-  // If the current page is close to the beginning, adjust the endPage
-  // to always show 5 buttons from the start.
-  if (currentPage <= Math.ceil(range / 2)) {
-    endPage = range;
+  if (totalPages <= range) {
+    // If the total number of pages is less than or equal to the range,
+    // display all pages from 1 to totalPages.
+    startPage = 1;
+    endPage = totalPages;
+  } else {
+    // If the current page is close to the beginning, adjust the endPage
+    // to always show 5 buttons from the start.
+    if (currentPage <= Math.ceil(range / 2)) {
+      endPage = range;
+    }
+    // If the current page is close to the end, adjust the startPage
+    // to always show 5 buttons from the end.
+    else if (currentPage + Math.floor(range / 2) >= totalPages) {
+      startPage = totalPages - range + 1;
+    }
   }
-  // If the current page is close to the end, adjust the startPage
-  // to always show 5 buttons from the end.
-  else if (currentPage + Math.floor(range / 2) >= totalPages) {
-    startPage = totalPages - range + 1;
-  }
-}
 
-// Generate the array of buttons to display
-const pageNumbers = Array.from({ length: endPage - startPage + 1 }, (_, index) => startPage + index);
-
+  // Generate the array of buttons to display
+  const pageNumbers = Array.from(
+    { length: endPage - startPage + 1 },
+    (_, index) => startPage + index
+  );
 
   return (
-    <div className="filter-app container">
-      <div className="row">   
-        {/* Left Panel - Checklist Filters */}
-        <div className="left-panel col-lg-3 col-md-4">
-          <ChecklistFilters
-            filterOptions={filterOptions}
-            handleCheckboxChange={handleCheckboxChange}
-            handleSetFilters={handleSetFilters}
-            filteredArray={filteredArray} // Pass the data array as a prop
-            handleArchiveChange={handleArchiveChange}
-            archiveState={archiveState}
-          />
-        </div>
-<div className="right-panel col-lg-9 col-md-8">
-<SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
-<FilteredResults filteredArray={filteredArray} currentItems={currentItems}searchQuery={searchQuery}  />
+<>
+      <Header />
+      <main className="container">
+	  <h1 property="name" id="wb-cont">Pay system information for employees and managers</h1>
 
-      {/* Pagination */}
-      <div className="pagination btn-group me-2" role="group">
-  {pageNumbers.map((pageNumber) => (
-    <button
-      className={`btn btn-secondary${currentPage === pageNumber ? " active" : ""}`}
-      key={pageNumber}
-      onClick={() => handlePageChange(pageNumber)}
-    >
-      {pageNumber}
-    </button>
-  ))}
-</div>
+	<p>Search for instructional documentation targeted specifically to employees and mangers related to pay and benefits for the Government of Canada.</p>
+	
+	<section id="help" class="alert alert-info mrgn-tp-md mrgn-bttm-sm col-md-12">
+    <h2>How to use the filter</h2>
+    <p>Select your role and the topic of instructions. The numbers that appear beside roles and topics indicate the number of search results that will display automatically when you select these. Multiple selections will result in a smaller set of results. You can also search by keyword to narrow down results. To start a new search, first clear the filter.</p>
+  </section>
+      <div className="filter-app container">
+        <div className="row">
+          {/* Left Panel - Checklist Filters */}
+          <div className="left-panel col-lg-3 col-md-4">
+            <ChecklistFilters
+              filterOptions={filterOptions}
+              handleCheckboxChange={handleCheckboxChange}
+              handleSetFilters={handleSetFilters}
+              filteredArray={filteredArray} // Pass the data array as a prop
+              handleArchiveChange={handleArchiveChange}
+              archiveState={archiveState}
+            />
+          </div>
+          <div className="right-panel col-lg-9 col-md-8">
+            <SearchBar
+              searchQuery={searchQuery}
+              setSearchQuery={setSearchQuery}
+            />
+            <FilteredResults
+              filteredArray={filteredArray}
+              currentItems={currentItems}
+              searchQuery={searchQuery}
+            />
+
+            {/* Pagination */}
+            <div className="pagination btn-group me-2" role="group">
+              {pageNumbers.map((pageNumber) => (
+                <button
+                  className={`btn btn-secondary${
+                    currentPage === pageNumber ? " active" : ""
+                  }`}
+                  key={pageNumber}
+                  onClick={() => handlePageChange(pageNumber)}
+                >
+                  {pageNumber}
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
-      </div>     
-    </div>
+       </main>
+      <Footer />
+  </> 
   );
 }

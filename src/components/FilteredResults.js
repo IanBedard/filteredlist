@@ -13,17 +13,12 @@ const ResultCard = ({ item, searchQuery }) => {
   return (
     <div className="result-card">
       {/* Display item details here */}
-      <h3
+      <h3 className="mrgn-tp-md"
         dangerouslySetInnerHTML={{
           __html: highlightText(item.Title, searchQuery),
         }}
       />
-      <p
-        dangerouslySetInnerHTML={{
-          __html: highlightText(item.Description, searchQuery),
-        }}
-      />
-      <a href={item.URL}>Read More</a>
+      
     </div>
   );
 };
