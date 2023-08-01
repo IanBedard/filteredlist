@@ -2,7 +2,7 @@ import React from "react";
 
 export default () => {
     return (
-    <main>
+    <>
         <ul id="wb-tphp">
             <li class="wb-slc"> <a class="wb-sl" href="#wb-cont">Skip to main content</a> </li>
             <li class="wb-slc visible-sm visible-md visible-lg"> <a class="wb-sl" href="#wb-info">Skip to "About this
@@ -40,23 +40,20 @@ export default () => {
                     
                 </div>
             </div>
-            <nav role="navigation" id="wb-sm" data-ajax-replace="/site/wet4.0/html5/includes/sitemenu-eng.html"
-                data-trgt="mb-pnl" class="wb-menu visible-md visible-lg" typeof="SiteNavigationElement">
-                <div class="container nvbar">
-                    <h2>Topics menu</h2>
-                    <div class="row">
-                        <ul class="list-inline menu">
-                            <li><a href="https://gcintranet.tpsgc-pwgsc.gc.ca/gc/rem-eng.html">Compensation</a></li>
-                            <li><a href="https://gcintranet.tpsgc-pwgsc.gc.ca/gc/app-proc-eng.html">Procurement</a></li>
-                            <li><a href="https://gcintranet.tpsgc-pwgsc.gc.ca/gc/immeub-build-eng.html">Buildings and
-                                    offices</a></li>
-                            <li><a href="https://gcintranet.tpsgc-pwgsc.gc.ca/fp-gf/index-eng.html">Government finances</a>
-                            </li>
-                            <li><a href="https://gcintranet.tpsgc-pwgsc.gc.ca/gc/services-eng.html">More services</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
+            <nav role="navigation" id="wb-sm" data-ajax-replace="/site/wet4.0/html5/includes/sitemenu-eng.html" data-trgt="mb-pnl" class="wb-menu visible-md visible-lg" typeof="SiteNavigationElement">
+	<div class="container nvbar">
+		<h2>Topics menu</h2>
+		<div class="row">
+			<ul class="list-inline menu">
+				<li><a href="https://gcintranet.tpsgc-pwgsc.gc.ca/gc/rem-eng.html">Compensation</a></li>
+				<li><a href="https://gcintranet.tpsgc-pwgsc.gc.ca/gc/app-proc-eng.html">Procurement</a></li>
+				<li><a href="https://gcintranet.tpsgc-pwgsc.gc.ca/gc/immeub-build-eng.html">Buildings and offices</a></li>
+				<li><a href="https://gcintranet.tpsgc-pwgsc.gc.ca/fp-gf/index-eng.html">Government finances</a></li>
+				<li><a href="https://gcintranet.tpsgc-pwgsc.gc.ca/gc/services-eng.html">More services</a></li>
+			</ul>
+		</div>
+	</div>
+</nav>
     
             <nav role="navigation" id="wb-bc" class="" property="breadcrumb">
                 <h2 class="wb-inv">You are here:</h2>
@@ -77,5 +74,5 @@ export default () => {
                 </div>
             </nav>
         </header>
-    </main>);
+    </>);
 }

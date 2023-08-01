@@ -22,52 +22,52 @@ const ChecklistFilters = ({
 
   const topics = [
     {
-      id: "RET",
-      name: "Retroactive",
-    },
-    {
-      id: "UNI",
-      name: "Union",
-    },
-    {
-      id: "EME",
-      name: "Emergency salary advance and priority payments",
-    },
-    {
-      id: "LEA",
-      name: "Leave",
-    },
-    {
-      id: "SAL",
-      name: "Salary administration",
-    },
-    {
-      id: "ENT",
-      name: "Entitlements",
-    },
-    {
-      id: "PEN",
-      name: "Pension and benefits",
-    },
-    {
-      id: "TAX",
-      name: "Tax",
+      id: "APP",
+      name: "Approvals",
     },
     {
       id: "Ded",
       name: "Deductions",
     },
     {
-      id: "PAY",
-      name: "Pay statements",
+      id: "EME",
+      name: "Emergency salary advance and priority payments",
     },
     {
-      id: "APP",
-      name: "Approvals",
+      id: "ENT",
+      name: "Entitlements",
+    },
+    {
+      id: "LEA",
+      name: "Leave",
     },
     {
       id: "MAN",
       name: "Manager self service",
+    },
+    {
+      id: "PAY",
+      name: "Pay statements",
+    },
+    {
+      id: "PEN",
+      name: "Pension and benefits",
+    },
+    {
+      id: "RET",
+      name: "Retroactive",
+    },
+    {
+      id: "SAL",
+      name: "Salary administration",
+    },
+    {
+      id: "TAX",
+      name: "Tax",
+    },
+    {
+      id: "UNI",
+      name: "Union",
     }
   ];
   const getCountForRole = (roleId) => {
@@ -110,7 +110,7 @@ const ChecklistFilters = ({
                 }
               />
               {role.name}{" "}
-              <span className="badge bg-primary rounded-pill">
+              <span className="badge rounded-pill">
                 {getCountForRole(role.id)}
               </span>
             </label>
@@ -136,7 +136,7 @@ const ChecklistFilters = ({
             </label>
           </div>
         ))}
-
+  <br></br>
         <button
           className="btn btn-outline-danger"
           onClick={() => handleSetFilters(false)}
@@ -155,6 +155,11 @@ const ChecklistFilters = ({
             Archive
           </label>
               </div> */}
+
+            <div>
+              <h3>Feedback</h3>
+              <p>We're always looking for ways to improve this page. Email your suggestions or questions to <a href="mailto:tpsgc.dgapsruop-pabcsbpu.pwgsc@tpsgc.gc.ca">tpsgc.dgapsruop-pabcsbpu.pwgsc@tpsgc.gc.ca</a></p>
+            </div>
       </div>
 
   );
