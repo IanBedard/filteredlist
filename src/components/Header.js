@@ -1,5 +1,8 @@
 import React from "react";
 
+const mouseIn = e => e.target.nextElementSibling.classList.add('open');
+const mouseOut = e => e.target.nextElementSibling.classList.remove('open');
+
 export default () => {
     return (
     <>
@@ -45,11 +48,36 @@ export default () => {
 		<h2>Topics menu</h2>
 		<div class="row">
 			<ul class="list-inline menu">
-				<li><a href="https://gcintranet.tpsgc-pwgsc.gc.ca/gc/rem-eng.html">Compensation</a></li>
-				<li><a href="https://gcintranet.tpsgc-pwgsc.gc.ca/gc/app-proc-eng.html">Procurement</a></li>
-				<li><a href="https://gcintranet.tpsgc-pwgsc.gc.ca/gc/immeub-build-eng.html">Buildings and offices</a></li>
-				<li><a href="https://gcintranet.tpsgc-pwgsc.gc.ca/fp-gf/index-eng.html">Government finances</a></li>
-				<li><a href="https://gcintranet.tpsgc-pwgsc.gc.ca/gc/services-eng.html">More services</a></li>
+				<li>
+                    <a href="https://gcintranet.tpsgc-pwgsc.gc.ca/gc/rem-eng.html" onMouseOver={mouseIn} onMouseOut={mouseOut}>Compensation</a>
+                    <ul className="sm list-unstyled">
+                        <li><a href="#">Test</a></li>
+                    </ul>
+                </li>
+				<li>
+                    <a href="https://gcintranet.tpsgc-pwgsc.gc.ca/gc/app-proc-eng.html" onMouseOver={mouseIn} onMouseOut={mouseOut}>Procurement</a>
+                    <ul className="sm list-unstyled">
+                        <li><a href="#">Test</a></li>
+                    </ul>
+                </li>
+				<li>
+                    <a href="https://gcintranet.tpsgc-pwgsc.gc.ca/gc/immeub-build-eng.html" onMouseOver={mouseIn} onMouseOut={mouseOut}>Buildings and offices</a>
+                    <ul className="sm list-unstyled">
+                        <li><a href="#">Test</a></li>
+                    </ul>
+                </li>
+				<li>
+                    <a href="https://gcintranet.tpsgc-pwgsc.gc.ca/fp-gf/index-eng.html" onMouseOver={mouseIn} onMouseOut={mouseOut}>Government finances</a>
+                    <ul className="sm list-unstyled">
+                        <li><a href="#">Test</a></li>
+                    </ul>
+                </li>
+				<li>
+                    <a href="https://gcintranet.tpsgc-pwgsc.gc.ca/gc/services-eng.html" onMouseOver={mouseIn} onMouseOut={mouseOut}>More services</a>
+                    <ul className="sm list-unstyled">
+                        <li><a href="#">Test</a></li>
+                    </ul>
+                </li>
 			</ul>
 		</div>
 	</div>

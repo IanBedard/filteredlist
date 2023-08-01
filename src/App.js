@@ -8,7 +8,7 @@ import "./App.css";
 import SearchBar from "./components/SearchBar.js";
 import FilteredResults from "./components/FilteredResults.js";
 import ChecklistFilters from "./components/CheckListFilters";
-//import Header from "./components/Header";
+import Header from "./components/Header";
 import Footer from "./components/Footer";
 
 export default function App() {
@@ -144,6 +144,7 @@ export default function App() {
 
   return (
 <>
+  <Header />
       
       <main className="container">
 	  <h1 property="name" id="wb-cont">Pay system information for employees and managers</h1>
