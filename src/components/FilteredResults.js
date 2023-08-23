@@ -13,7 +13,7 @@ const ResultCard = ({ item, searchQuery }) => {
   return (
     <div className="result-card">
       {/* Display item details here */}
-      <h3 className="mrgn-tp-md"
+      <p className=""
         dangerouslySetInnerHTML={{
           __html: highlightText(item.Title, searchQuery),
         }}
@@ -24,6 +24,9 @@ const ResultCard = ({ item, searchQuery }) => {
 };
 
 const FilteredResults = ({ currentItems, searchQuery }) => {
+ function reload(){
+  window.location.reload()
+ }
   return (
     <div className="filtered-results">
       {currentItems.length > 0 ? (
@@ -31,15 +34,16 @@ const FilteredResults = ({ currentItems, searchQuery }) => {
           <ResultCard key={index} item={item} searchQuery={searchQuery} />
         ))
       ) : (
-        <div className="aler alert-warning">
+        <section className="alert alert-warning">
             <h3>Sorry, we couldn't find a procedure, job aid or instruction document that match the filters selected</h3>
             <p>please try</p>
                 <ul>
                     <li>removing some filter</li>
                     <li>making sure all search terms are spelled correctly</li>
-                    <li>clearing all filters</li>
+                    <li ><a href="#" class="alert-link" onClick={reload}>clearing all filters</a></li>
                 </ul>
-        </div>
+                <p>We're always looking for ways to improve this page. Email your suggestions or questions to <a href="mailto:tpsgc.dgapsruop-pabcsbpu.pwgsc@tpsgc.gc.ca">tpsgc.dgapsruop-pabcsbpu.pwgsc@tpsgc.gc.ca</a></p>
+        </section>
       )}
     </div>
   );

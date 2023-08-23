@@ -1,5 +1,8 @@
 import React from "react";
 
+const mouseIn = e => e.target.nextElementSibling.classList.add('open');
+const mouseOut = e => e.target.nextElementSibling.classList.remove('open');
+
 export default () => {
     return (
     <>
@@ -45,11 +48,60 @@ export default () => {
 		<h2>Topics menu</h2>
 		<div class="row">
 			<ul class="list-inline menu">
-				<li><a href="https://gcintranet.tpsgc-pwgsc.gc.ca/gc/rem-eng.html">Compensation</a></li>
-				<li><a href="https://gcintranet.tpsgc-pwgsc.gc.ca/gc/app-proc-eng.html">Procurement</a></li>
-				<li><a href="https://gcintranet.tpsgc-pwgsc.gc.ca/gc/immeub-build-eng.html">Buildings and offices</a></li>
-				<li><a href="https://gcintranet.tpsgc-pwgsc.gc.ca/fp-gf/index-eng.html">Government finances</a></li>
-				<li><a href="https://gcintranet.tpsgc-pwgsc.gc.ca/gc/services-eng.html">More services</a></li>
+				<li>
+                    <a href="https://gcintranet.tpsgc-pwgsc.gc.ca/gc/rem-eng.html" onMouseOver={mouseIn} onMouseOut={mouseOut}>Compensation</a>
+                    <ul className="sm list-unstyled">
+                        <li><a href="https://gcintranet.tpsgc-pwgsc.gc.ca/remuneration-compensation/comm-eng.html" tabindex="-1" aria-posinset="1" aria-setsize="5" role="menuitem">Compensation community hub</a></li>
+		                <li><a href="https://gcintranet.tpsgc-pwgsc.gc.ca/remuneration-compensation/awr-cwa-eng.html" tabindex="-1" aria-posinset="2" aria-setsize="5" role="menuitem">Compensation web applications</a></li>	
+			            <li><a href="https://gcintranet.tpsgc-pwgsc.gc.ca/sprh-shrs/index-eng.html" tabindex="-1" aria-posinset="3" aria-setsize="5" role="menuitem">Shared Human Resources Services</a></li>	
+		                <li><a href="https://intranet.canada.ca/ppb-rpa/index-eng.asp" tabindex="-1" aria-posinset="4" aria-setsize="5" role="menuitem">Pay, pension and benefits</a></li>
+ 		                <li class="slflnk"><a href="https://gcintranet.tpsgc-pwgsc.gc.ca/remuneration-compensation/index-eng.html" tabindex="-1" aria-posinset="5" aria-setsize="5" role="menuitem">Compensation - More</a></li>
+                    </ul>
+                </li>
+				<li>
+                    <a href="https://gcintranet.tpsgc-pwgsc.gc.ca/gc/app-proc-eng.html" onMouseOver={mouseIn} onMouseOut={mouseOut}>Procurement</a>
+                    <ul className="sm list-unstyled">
+                        <li><a href="https://gcintranet.tpsgc-pwgsc.gc.ca/app-proc/parcourir-browse/index-eng.html" tabindex="-1" aria-posinset="1" aria-setsize="4" role="menuitem">Browse and purchase goods and services</a></li>
+                        <li><a href="https://gcintranet.tpsgc-pwgsc.gc.ca/app-proc/guides/index-eng.html" tabindex="-1" aria-posinset="2" aria-setsize="4" role="menuitem">Procurement advice, guides and tools</a></li>
+                        <li><a href="https://www.canada.ca/en/treasury-board-secretariat/corporate/job-opportunities/careers-public-procurement.html" tabindex="-1" aria-posinset="3" aria-setsize="4" role="menuitem">Careers in procurement</a></li>
+                        <li class="slflnk"><a href="https://gcintranet.tpsgc-pwgsc.gc.ca/gc/app-proc-eng.html" tabindex="-1" aria-posinset="4" aria-setsize="4" role="menuitem">Procurement - More</a></li>
+                    </ul>
+                </li>
+				<li>
+                    <a href="https://gcintranet.tpsgc-pwgsc.gc.ca/gc/immeub-build-eng.html" onMouseOver={mouseIn} onMouseOut={mouseOut}>Buildings and offices</a>
+                    <ul className="sm list-unstyled">
+                        <li><a href="https://gcintranet.tpsgc-pwgsc.gc.ca/bi-rp/issues-eng.html" tabindex="-1" aria-posinset="1" aria-setsize="6" role="menuitem">Report building and office issues (National Service Call Centre)</a></li>
+                        <li><a href="https://gcintranet.tpsgc-pwgsc.gc.ca/bi-rp/rep-dir-eng.html" tabindex="-1" aria-posinset="2" aria-setsize="6" role="menuitem">Property managed by the Government of Canada</a></li>
+                        <li><a href="https://gcintranet.tpsgc-pwgsc.gc.ca/bi-rp/publications/index-eng.html" tabindex="-1" aria-posinset="3" aria-setsize="6" role="menuitem">Policies and procedures on federal buildings and offices</a></li>
+                        <li><a href="https://gcintranet.tpsgc-pwgsc.gc.ca/bi-rp/prpi-rpc-eng.html" tabindex="-1" aria-posinset="4" aria-setsize="6" role="menuitem">Find a real property contact</a></li>
+                        <li><a href="https://gcintranet.tpsgc-pwgsc.gc.ca/bi-rp/ser-cat/index-eng.html" tabindex="-1" aria-posinset="5" aria-setsize="6" role="menuitem">Real Property Branch service catalogue</a></li>
+                        <li class="slflnk"><a href="https://gcintranet.tpsgc-pwgsc.gc.ca/gc/immeub-build-eng.html" tabindex="-1" aria-posinset="6" aria-setsize="6" role="menuitem">Buildings and offices - More</a></li>
+                    </ul>
+                </li>
+				<li>
+                    <a href="https://gcintranet.tpsgc-pwgsc.gc.ca/fp-gf/index-eng.html" onMouseOver={mouseIn} onMouseOut={mouseOut}>Government finances</a>
+                    <ul className="sm list-unstyled">
+                        <li><a href="https://gcintranet.tpsgc-pwgsc.gc.ca/rg/txt/paiements-payments-eng.html" tabindex="-1" aria-posinset="1" aria-setsize="7" role="menuitem">Issuing payments</a></li>
+                        <li><a href="https://gcintranet.tpsgc-pwgsc.gc.ca/rg/txt/ab-ba-eng.html" tabindex="-1" aria-posinset="2" aria-setsize="7" role="menuitem">Receiving payments</a></li>
+                        <li><a href="https://gcintranet.tpsgc-pwgsc.gc.ca/fp-gf/scrg-rgcs/index-eng.html" tabindex="-1" aria-posinset="3" aria-setsize="7" role="menuitem">Receiver General central systems</a></li>
+                        <li><a href="https://gcintranet.tpsgc-pwgsc.gc.ca/fp-gf/efaf-yer-eng.html" tabindex="-1" aria-posinset="4" aria-setsize="7" role="menuitem">Year-end requirements</a></li>
+                        <li><a href="https://gcintranet.tpsgc-pwgsc.gc.ca/fp-gf/scc-mac-eng.html" tabindex="-1" aria-posinset="5" aria-setsize="7" role="menuitem">Maintaining the accounts of Canada</a></li>
+                        <li><a href="https://gcintranet.tpsgc-pwgsc.gc.ca/sigma/index-eng.html" tabindex="-1" aria-posinset="6" aria-setsize="7" role="menuitem">SIGMA: Finance, procurement and real property system</a></li>
+                        <li class="slflnk"><a href="https://gcintranet.tpsgc-pwgsc.gc.ca/fp-gf/index-eng.html" tabindex="-1" aria-posinset="7" aria-setsize="7" role="menuitem">Government finances - More</a></li>
+                    </ul>
+                </li>
+				<li>
+                    <a href="https://gcintranet.tpsgc-pwgsc.gc.ca/gc/services-eng.html" onMouseOver={mouseIn} onMouseOut={mouseOut}>More services</a>
+                    <ul className="sm list-unstyled">
+                        <li><a href="https://gcintranet.tpsgc-pwgsc.gc.ca/bt-tb/index-eng.html" tabindex="-1" aria-posinset="1" aria-setsize="7" role="menuitem">Translation Bureau's language services and tools</a></li>
+                        <li><a href="https://gcintranet.tpsgc-pwgsc.gc.ca/rhgc-gchr/index-eng.html" tabindex="-1" aria-posinset="2" aria-setsize="7" role="menuitem">My Government of Canada Human Resources</a></li>
+                        <li><a href="https://gcintranet.tpsgc-pwgsc.gc.ca/sem-emm/index-eng.html" tabindex="-1" aria-posinset="3" aria-setsize="7" role="menuitem">Copyright Media Clearance Program</a></li>
+                        <li><a href="https://gcintranet.tpsgc-pwgsc.gc.ca/gc/pub-adv/index-eng.html" tabindex="-1" aria-posinset="4" aria-setsize="7" role="menuitem">Advertising coordination and partnerships</a></li>
+                        <li><a href="https://gcintranet.tpsgc-pwgsc.gc.ca/rop-por/index-eng.html" tabindex="-1" aria-posinset="5" aria-setsize="7" role="menuitem">Public opinion research</a></li>
+                        <li><a href="https://gcintranet.tpsgc-pwgsc.gc.ca/forms/text/index-eng.html" tabindex="-1" aria-posinset="6" aria-setsize="7" role="menuitem">Forms catalogue</a></li>
+                        <li class="slflnk"><a href="https://gcintranet.tpsgc-pwgsc.gc.ca/gc/services-eng.html" tabindex="-1" aria-posinset="7" aria-setsize="7" role="menuitem">Services - More</a></li>
+                    </ul>
+                </li>
 			</ul>
 		</div>
 	</div>

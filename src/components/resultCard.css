@@ -1,17 +1,5 @@
 /* resultCard.css */
 
-  .result-card {
-
-    transition: background-color 0.3s, box-shadow 0.3s;
-    margin-bottom: 1rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 1px solid black;
-  }
-  
-  .result-card:hover {
-    background-color: #f0f0f0; /* Change the background color on hover */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle shadow effect on hover */
-  }
 
 
   .highlighted {
@@ -19,3 +7,19 @@
     font-weight: bold; 
 
   }
+.result-card:nth-child(odd){
+  background-color:#e7e7e7;
+}
+.result-card:nth-child(even){
+  background-color: #ffffff;
+}
+
+#showmore{
+margin-left:-20px;
+font-size: smaller;
+border-color: transparent;
+}
+.result-card p{
+  color: rgb(18, 101, 209);
+  text-decoration: underline;
+}

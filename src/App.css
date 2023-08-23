@@ -19,26 +19,38 @@
 .pagination {
   display: flex;
   justify-content: center;
-  gap: 5px;
+ 
   margin-top: 20px;
 }
 
-.pagination .page-item {
-  list-style: none;
-  display: inline-block;
-  margin: 0;
-  padding: 5px 10px;
-  background-color: #f2f2f2;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+
+.pagination{
+  border-radius: 4px;
 }
 
+.feedback{
+  font-size: smaller;
+}
 
+ .button{
+  border: none;
+  width: 50px;
+  height: 50px;
+  background-color: rgb(230, 230, 230);
+  color: rgb(36, 58, 158);
+ } 
+ .button .active{
+
+  background-color: rgb(36, 58, 158) ;
+  color: rgb(255, 255, 255);;
+ } 
+.dropdown-item label{
+  font-weight: 100;
+}
 
   .dropdown-item input{
     margin-right:8px;
+    
   }
 
 .badge{

@@ -1,5 +1,6 @@
 // components/ChecklistFilters.js
 import React from "react";
+import "./resultCard.css";
 
 const ChecklistFilters = ({
   filterOptions,
@@ -92,50 +93,40 @@ const ChecklistFilters = ({
     return filteredDataForTopic.length;
   };
 
+  const makeList = (list, _countFn) => {
+    return list.map((item) => (
+      <div key={item.id} className="dropdown-item">
+        <label className="form-check-label checkbox" >
+          <input
+            className="form-check-input"
+            type="checkbox"
+            checked={filterOptions[item.id]}
+            onChange={(e) =>
+              handleCheckboxChange(item.id, e.target.checked)
+            }
+          />
+          {item.name}{" "}
+          <span>
+           ({_countFn(item.id)}) 
+          </span>
+        </label>
+      </div>
+    ))
+  }
+
   return (
    
       <div className="panel-body">
       
-  
-        <h2>Roles</h2>
-        {roles.map((role) => (
-          <div key={role.id} className="dropdown-item">
-            <label className="form-check-label">
-              <input
-                className="form-check-input"
-                type="checkbox"
-                checked={filterOptions[role.id]}
-                onChange={(e) =>
-                  handleCheckboxChange(role.id, e.target.checked)
-                }
-              />
-              {role.name}{" "}
-              <span className="badge rounded-pill">
-                {getCountForRole(role.id)}
-              </span>
-            </label>
-          </div>
-        ))}
+    <h2>Filters</h2>
+        <h3>Role</h3>
+        {makeList(roles, getCountForRole)}
       
-        <h2>Topics</h2>
-        {topics.map((topic) => (
-          <div key={topic.id} className="dropdown-item">
-            <label className="form-check-label">
-              <input
-                className="form-check-input"
-                type="checkbox"
-                checked={filterOptions[topic.id]}
-                onChange={(e) =>
-                  handleCheckboxChange(topic.id, e.target.checked)
-                }
-              />
-              {topic.name}{" "}
-              <span className="badge bg-primary rounded-pill">
-                {getCountForTopic(topic.id)}
-              </span>
-            </label>
-          </div>
-        ))}
+        <h3>Topic</h3>
+        {makeList(topics.slice(0, 3), getCountForTopic)}
+        <details id="showmore">
+        <summary>Show more</summary>
+        {makeList(topics.slice(3, topics.length), getCountForTopic)}</details>
   <br></br>
         <button
           className="btn btn-outline-danger"
@@ -156,8 +147,8 @@ const ChecklistFilters = ({
           </label>
               </div> */}
 
-            <div>
-              <h3>Feedback</h3>
+            <div className="feedback">
+              <h2>Feedback</h2>
               <p>We're always looking for ways to improve this page. Email your suggestions or questions to <a href="mailto:tpsgc.dgapsruop-pabcsbpu.pwgsc@tpsgc.gc.ca">tpsgc.dgapsruop-pabcsbpu.pwgsc@tpsgc.gc.ca</a></p>
             </div>
       </div>

@@ -3,12 +3,12 @@ import { useState } from "react";
 import { data } from "./data/data-eng";
 import React from "react";
 import "./theme.css";
-//import "./bootstrap.css";
+
 import "./App.css";
 import SearchBar from "./components/SearchBar.js";
 import FilteredResults from "./components/FilteredResults.js";
 import ChecklistFilters from "./components/CheckListFilters";
-//import Header from "./components/Header";
+import Header from "./components/Header";
 import Footer from "./components/Footer";
 
 export default function App() {
@@ -144,16 +144,14 @@ export default function App() {
 
   return (
 <>
+  <Header />
       
       <main className="container">
 	  <h1 property="name" id="wb-cont">Pay system information for employees and managers</h1>
 
 	<p>Search for instructional documentation targeted specifically to employees and mangers related to pay and benefits for the Government of Canada.</p>
 	
-	<section id="help" class="alert alert-info mrgn-tp-md mrgn-bttm-sm col-md-12">
-    <h2>How to use the filter</h2>
-    <p>Select your role and the topic of instructions. The numbers that appear beside roles and topics indicate the number of search results that will display automatically when you select these. Multiple selections will result in a smaller set of results. You can also search by keyword to narrow down results. To start a new search, first clear the filter.</p>
-  </section>
+
       <div className="filter-app container">
         <div className="row">
           {/* Left Panel - Checklist Filters */}
@@ -182,7 +180,7 @@ export default function App() {
             <div className="pagination" role="group">
               {pageNumbers.map((pageNumber) => (
                 <button
-                  className={`btn btn-secondary${
+                  className={`button ${
                     currentPage === pageNumber ? " active" : ""
                   }`}
                   key={pageNumber}
