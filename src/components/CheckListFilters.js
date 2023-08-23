@@ -1,5 +1,5 @@
 // components/ChecklistFilters.js
-import React from "react";
+import React, { useState } from "react";
 
 const ChecklistFilters = ({
   filterOptions,
@@ -113,6 +113,8 @@ const ChecklistFilters = ({
     ))
   }
 
+  const [showToggle, setShowToogle] = useState(false);
+
   return (
    
       <div className="panel-body">
@@ -123,8 +125,8 @@ const ChecklistFilters = ({
       
         <h2>Topics</h2>
         {makeList(topics.slice(0, 3), getCountForTopic)}
-        <details>
-        <summary>Show more</summary>
+        <details onClick={() => setShowToogle(!showToggle)}>
+        <summary>{showToggle?"Show less":"Show more"}</summary>
         {makeList(topics.slice(3, topics.length), getCountForTopic)}</details>
   <br></br>
         <button
