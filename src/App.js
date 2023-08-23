@@ -149,7 +149,7 @@ export default function App() {
       <main className="container">
 	  <h1 property="name" id="wb-cont">Pay system information for employees and managers</h1>
 
-	<p>Search for instructional documentation targeted specifically to employees and mangers related to pay and benefits for the Government of Canada.</p>
+	<p>Search for instructional documentation targeted specifically to employees and mangers and related to pay and benefits for the Government of Canada.</p>
 	
 	<section id="help" class="alert alert-info mrgn-tp-md mrgn-bttm-sm col-md-12">
     <h2>How to use the filter</h2>
@@ -180,19 +180,20 @@ export default function App() {
             />
 
             {/* Pagination */}
-            <div className="pagination" role="group">
+            <ul className="pagination" role="group">
               {pageNumbers.map((pageNumber) => (
-                <button
-                  className={`btn btn-secondary${
+                <li
+                  className={`${
                     currentPage === pageNumber ? " active" : ""
                   }`}
                   key={pageNumber}
-                  onClick={() => handlePageChange(pageNumber)}
                 >
-                  {pageNumber}
-                </button>
+                  <a 
+                  onClick={() => handlePageChange(pageNumber)}
+                  >{pageNumber}</a>
+                </li>
               ))}
-            </div>
+            </ul>
           </div>
         </div>
       </div>
