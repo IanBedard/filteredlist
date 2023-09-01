@@ -2,7 +2,6 @@
 // components/ChecklistFilters.js
 import React, { useState } from "react";
 
-import "./resultCard.css";
 
 const ChecklistFilters = ({
   filterOptions,
@@ -10,7 +9,8 @@ const ChecklistFilters = ({
   handleSetFilters,
   filteredArray,
   handleArchiveChange,
-  archiveState,
+  archiveState
+
 }) => {
   const roles = [
     {
@@ -115,24 +115,36 @@ const ChecklistFilters = ({
       </div>
     ))
   }
+  
   const [showToggle, setShowToogle] = useState(false);
+ let list;
+ if (showToggle){
+  list =  makeList(topics.slice(3, topics.length), getCountForTopic)
+ }
+ else{
+  list = ""
+ }
   return (
    
-      <div className="panel-body">
+      <div className="">
       
     <h2>Filters</h2>
         <h3>Role</h3>
+        <div className="checklist">
         {makeList(roles, getCountForRole)}
-      
+        </div>
         <h3>Topic</h3>
+        <div className="checklist">
         {makeList(topics.slice(0, 3), getCountForTopic)}
-        <details onClick={() => setShowToogle(!showToggle)}>
-        <summary>{showToggle?"Show less":"Show more"}</summary>
-        {makeList(topics.slice(3, topics.length), getCountForTopic)}</details>
-  <br></br>
+        <p onClick={() => setShowToogle(!showToggle)}>
+        <summary className="showmore">{showToggle?"Show less":"Show more"}</summary></p>
+      
+        {list}
+        </div>
         <button
-          className="btn btn-outline-danger"
-          onClick={() => handleSetFilters(false)}
+          className="btn btn-danger"
+          onClick={() => window.location.reload()
+         }
         >
           Clear All
         </button>
@@ -149,7 +161,7 @@ const ChecklistFilters = ({
           </label>
               </div> */}
 
-            <div className="feedback">
+            <div className="feedback-screen">
               <h2>Feedback</h2>
               <p>We're always looking for ways to improve this page. Email your suggestions or questions to <a href="mailto:tpsgc.dgapsruop-pabcsbpu.pwgsc@tpsgc.gc.ca">tpsgc.dgapsruop-pabcsbpu.pwgsc@tpsgc.gc.ca</a></p>
             </div>

@@ -1,25 +1,26 @@
 /* resultCard.css */
 
 
-
+.items{
+  border-top: rgba(0, 0, 0, 0.281) solid 0.2px;
+ 
+  margin: 0;
+  padding: 10px;
+}
   .highlighted {
     background-color: #ffc107; 
     font-weight: bold; 
 
   }
 .result-card:nth-child(odd){
-  background-color:#e7e7e7;
+  background-color:#0000000e;
 }
 .result-card:nth-child(even){
   background-color: #ffffff;
 }
 
-#showmore{
-margin-left:-20px;
-font-size: smaller;
-border-color: transparent;
-}
 .result-card p{
-  color: rgb(18, 101, 209);
+  font-size: smaller;
+  color: rgb(25, 104, 207);
   text-decoration: underline;
 }

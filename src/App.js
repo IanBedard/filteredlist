@@ -163,6 +163,7 @@ export default function App() {
               filteredArray={filteredArray} // Pass the data array as a prop
               handleArchiveChange={handleArchiveChange}
               archiveState={archiveState}
+      
             />
           </div>
           <div className="right-panel col-lg-9 col-md-8">
@@ -171,6 +172,7 @@ export default function App() {
               setSearchQuery={setSearchQuery}
             />
             <FilteredResults
+            currentPage={currentPage}
               filteredArray={filteredArray}
               currentItems={currentItems}
               searchQuery={searchQuery}
@@ -178,6 +180,7 @@ export default function App() {
 
             {/* Pagination */}
             <ul className="pagination" role="group">
+              
               {pageNumbers.map((pageNumber) => (
                 <li
                   className={`${
@@ -192,6 +195,10 @@ export default function App() {
               ))}
             </ul>
           </div>
+          <div className="feedback-mobile">
+              <h2>Feedback</h2>
+              <p>We're always looking for ways to improve this page. Email your suggestions or questions to <a href="mailto:tpsgc.dgapsruop-pabcsbpu.pwgsc@tpsgc.gc.ca">tpsgc.dgapsruop-pabcsbpu.pwgsc@tpsgc.gc.ca</a></p>
+            </div>
         </div>
       </div>
        </main>

@@ -2,6 +2,7 @@
 import React from "react";
 import "./resultCard.css";
 import "../theme.css";
+
 const ResultCard = ({ item, searchQuery }) => {
   const highlightText = (text, searchQuery) => {
     if (!searchQuery) return text;
@@ -13,7 +14,7 @@ const ResultCard = ({ item, searchQuery }) => {
   return (
     <div className="result-card">
       {/* Display item details here */}
-      <p className=""
+      <p className="items"
         dangerouslySetInnerHTML={{
           __html: highlightText(item.Title, searchQuery),
         }}
@@ -23,12 +24,14 @@ const ResultCard = ({ item, searchQuery }) => {
   );
 };
 
-const FilteredResults = ({ currentItems, searchQuery }) => {
+const FilteredResults = ({ currentItems, searchQuery, currentPage, filteredArray }) => {
  function reload(){
   window.location.reload()
  }
   return (
     <div className="filtered-results">
+      <p className="left"><b>Showing {Math.max(1,((currentItems.length  + (16 * (currentPage-1))) - 15))} - {(currentItems.length) + (16 * (currentPage-1))} of {filteredArray.length} search results</b></p>
+      
       {currentItems.length > 0 ? (
         currentItems.map((item, index) => (
           <ResultCard key={index} item={item} searchQuery={searchQuery} />

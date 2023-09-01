@@ -1,20 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
 
-.result{
-    width: 75%;
-    margin: 10px;
-   
-}
-.result li{
- font-size: 2em;
- list-style: none;
- margin-bottom: 10px;
-}
-.result a{
-    text-decoration: none;
-    
-   }
+
 /*pagination*/
 .pagination {
   display: flex;
@@ -27,34 +14,43 @@
 .pagination{
   border-radius: 4px;
 }
-
-.feedback{
-  font-size: smaller;
+.checklist{
+  margin-left:20px
 }
 
- .button{
-  border: none;
-  width: 50px;
-  height: 50px;
-  background-color: rgb(230, 230, 230);
-  color: rgb(36, 58, 158);
- } 
- .button .active{
-
-  background-color: rgb(36, 58, 158) ;
-  color: rgb(255, 255, 255);;
- } 
 .dropdown-item label{
   font-weight: 100;
 }
-
+.left{
+text-align: end;
+}
   .dropdown-item input{
     margin-right:8px;
     
   }
-
+.showmore{
+  font-size: small;
+}
 .badge{
   padding: 2px 6px; /* Adjust padding for smaller size */
   font-size: 12px; /* Adjust font size for smaller size */
   font-weight: 600;
+}
+
+.feedback-screen{
+  font-size: smaller;
+  display:block;
+}
+.feedback-mobile {
+  font-size: smaller;
+  display:none;
+  }
+@media only screen and (max-width: 1000px) {
+  .feedback-screen {
+  display: none;
+  }
+  .feedback-mobile {
+    display:block;
+    padding-bottom: 20px;
+    }
 }
