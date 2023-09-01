@@ -1,7 +1,7 @@
 import React from "react";
 
-const mouseIn = e => e.target.nextElementSibling.classList.add('open');
-const mouseOut = e => e.target.nextElementSibling.classList.remove('open');
+const mouseIn = e => e.currentTarget.lastElementChild.classList.add('open');
+const mouseOut = e => e.currentTarget.lastElementChild.classList.remove('open');
 
 export default () => {
     return (
@@ -48,8 +48,8 @@ export default () => {
 		<h2>Topics menu</h2>
 		<div class="row">
 			<ul class="list-inline menu">
-				<li>
-                    <a href="https://gcintranet.tpsgc-pwgsc.gc.ca/gc/rem-eng.html" onMouseOver={mouseIn} onMouseOut={mouseOut}>Compensation</a>
+				<li onMouseOver={mouseIn} onMouseOut={mouseOut}>
+                    <a href="https://gcintranet.tpsgc-pwgsc.gc.ca/gc/rem-eng.html">Compensation</a>
                     <ul className="sm list-unstyled">
                         <li><a href="https://gcintranet.tpsgc-pwgsc.gc.ca/remuneration-compensation/comm-eng.html" tabindex="-1" aria-posinset="1" aria-setsize="5" role="menuitem">Compensation community hub</a></li>
 		                <li><a href="https://gcintranet.tpsgc-pwgsc.gc.ca/remuneration-compensation/awr-cwa-eng.html" tabindex="-1" aria-posinset="2" aria-setsize="5" role="menuitem">Compensation web applications</a></li>	
@@ -58,8 +58,8 @@ export default () => {
  		                <li class="slflnk"><a href="https://gcintranet.tpsgc-pwgsc.gc.ca/remuneration-compensation/index-eng.html" tabindex="-1" aria-posinset="5" aria-setsize="5" role="menuitem">Compensation - More</a></li>
                     </ul>
                 </li>
-				<li>
-                    <a href="https://gcintranet.tpsgc-pwgsc.gc.ca/gc/app-proc-eng.html" onMouseOver={mouseIn} onMouseOut={mouseOut}>Procurement</a>
+				<li onMouseOver={mouseIn} onMouseOut={mouseOut}>
+                    <a href="https://gcintranet.tpsgc-pwgsc.gc.ca/gc/app-proc-eng.html">Procurement</a>
                     <ul className="sm list-unstyled">
                         <li><a href="https://gcintranet.tpsgc-pwgsc.gc.ca/app-proc/parcourir-browse/index-eng.html" tabindex="-1" aria-posinset="1" aria-setsize="4" role="menuitem">Browse and purchase goods and services</a></li>
                         <li><a href="https://gcintranet.tpsgc-pwgsc.gc.ca/app-proc/guides/index-eng.html" tabindex="-1" aria-posinset="2" aria-setsize="4" role="menuitem">Procurement advice, guides and tools</a></li>
@@ -67,8 +67,8 @@ export default () => {
                         <li class="slflnk"><a href="https://gcintranet.tpsgc-pwgsc.gc.ca/gc/app-proc-eng.html" tabindex="-1" aria-posinset="4" aria-setsize="4" role="menuitem">Procurement - More</a></li>
                     </ul>
                 </li>
-				<li>
-                    <a href="https://gcintranet.tpsgc-pwgsc.gc.ca/gc/immeub-build-eng.html" onMouseOver={mouseIn} onMouseOut={mouseOut}>Buildings and offices</a>
+				<li onMouseOver={mouseIn} onMouseOut={mouseOut}>
+                    <a href="https://gcintranet.tpsgc-pwgsc.gc.ca/gc/immeub-build-eng.html">Buildings and offices</a>
                     <ul className="sm list-unstyled">
                         <li><a href="https://gcintranet.tpsgc-pwgsc.gc.ca/bi-rp/issues-eng.html" tabindex="-1" aria-posinset="1" aria-setsize="6" role="menuitem">Report building and office issues (National Service Call Centre)</a></li>
                         <li><a href="https://gcintranet.tpsgc-pwgsc.gc.ca/bi-rp/rep-dir-eng.html" tabindex="-1" aria-posinset="2" aria-setsize="6" role="menuitem">Property managed by the Government of Canada</a></li>
@@ -78,8 +78,8 @@ export default () => {
                         <li class="slflnk"><a href="https://gcintranet.tpsgc-pwgsc.gc.ca/gc/immeub-build-eng.html" tabindex="-1" aria-posinset="6" aria-setsize="6" role="menuitem">Buildings and offices - More</a></li>
                     </ul>
                 </li>
-				<li>
-                    <a href="https://gcintranet.tpsgc-pwgsc.gc.ca/fp-gf/index-eng.html" onMouseOver={mouseIn} onMouseOut={mouseOut}>Government finances</a>
+				<li onMouseOver={mouseIn} onMouseOut={mouseOut}>
+                    <a href="https://gcintranet.tpsgc-pwgsc.gc.ca/fp-gf/index-eng.html">Government finances</a>
                     <ul className="sm list-unstyled">
                         <li><a href="https://gcintranet.tpsgc-pwgsc.gc.ca/rg/txt/paiements-payments-eng.html" tabindex="-1" aria-posinset="1" aria-setsize="7" role="menuitem">Issuing payments</a></li>
                         <li><a href="https://gcintranet.tpsgc-pwgsc.gc.ca/rg/txt/ab-ba-eng.html" tabindex="-1" aria-posinset="2" aria-setsize="7" role="menuitem">Receiving payments</a></li>
@@ -90,8 +90,8 @@ export default () => {
                         <li class="slflnk"><a href="https://gcintranet.tpsgc-pwgsc.gc.ca/fp-gf/index-eng.html" tabindex="-1" aria-posinset="7" aria-setsize="7" role="menuitem">Government finances - More</a></li>
                     </ul>
                 </li>
-				<li>
-                    <a href="https://gcintranet.tpsgc-pwgsc.gc.ca/gc/services-eng.html" onMouseOver={mouseIn} onMouseOut={mouseOut}>More services</a>
+				<li onMouseOver={mouseIn} onMouseOut={mouseOut}>
+                    <a href="https://gcintranet.tpsgc-pwgsc.gc.ca/gc/services-eng.html">More services</a>
                     <ul className="sm list-unstyled">
                         <li><a href="https://gcintranet.tpsgc-pwgsc.gc.ca/bt-tb/index-eng.html" tabindex="-1" aria-posinset="1" aria-setsize="7" role="menuitem">Translation Bureau's language services and tools</a></li>
                         <li><a href="https://gcintranet.tpsgc-pwgsc.gc.ca/rhgc-gchr/index-eng.html" tabindex="-1" aria-posinset="2" aria-setsize="7" role="menuitem">My Government of Canada Human Resources</a></li>

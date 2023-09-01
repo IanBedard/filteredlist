@@ -177,19 +177,20 @@ export default function App() {
             />
 
             {/* Pagination */}
-            <div className="pagination" role="group">
+            <ul className="pagination" role="group">
               {pageNumbers.map((pageNumber) => (
-                <button
-                  className={`button ${
+                <li
+                  className={`${
                     currentPage === pageNumber ? " active" : ""
                   }`}
                   key={pageNumber}
-                  onClick={() => handlePageChange(pageNumber)}
                 >
-                  {pageNumber}
-                </button>
+                  <a 
+                  onClick={() => handlePageChange(pageNumber)}
+                  >{pageNumber}</a>
+                </li>
               ))}
-            </div>
+            </ul>
           </div>
         </div>
       </div>

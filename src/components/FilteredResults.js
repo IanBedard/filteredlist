@@ -1,7 +1,7 @@
 // components/FilteredResults.js
 import React from "react";
 import "./resultCard.css";
-
+import "../theme.css";
 const ResultCard = ({ item, searchQuery }) => {
   const highlightText = (text, searchQuery) => {
     if (!searchQuery) return text;
@@ -38,11 +38,11 @@ const FilteredResults = ({ currentItems, searchQuery }) => {
             <h3>Sorry, we couldn't find a procedure, job aid or instruction document that match the filters selected</h3>
             <p>please try</p>
                 <ul>
-                    <li>removing some filter</li>
+                    <li>removing some of your filters</li>
                     <li>making sure all search terms are spelled correctly</li>
                     <li ><a href="#" class="alert-link" onClick={reload}>clearing all filters</a></li>
                 </ul>
-                <p>We're always looking for ways to improve this page. Email your suggestions or questions to <a href="mailto:tpsgc.dgapsruop-pabcsbpu.pwgsc@tpsgc.gc.ca">tpsgc.dgapsruop-pabcsbpu.pwgsc@tpsgc.gc.ca</a></p>
+                <p>Still can’t find what your looking for? Contact us at <a href="mailto:tpsgc.dgapsruop-pabcsbpu.pwgsc@tpsgc.gc.ca">TPSGC.DGAPSRUOP-PABCSBPU.PWGSC@tpsgc.gc.ca</a></p>
         </section>
       )}
     </div>

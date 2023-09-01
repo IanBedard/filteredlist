@@ -1,5 +1,7 @@
 // components/ChecklistFilters.js
-import React from "react";
+// components/ChecklistFilters.js
+import React, { useState } from "react";
+
 import "./resultCard.css";
 
 const ChecklistFilters = ({
@@ -113,7 +115,7 @@ const ChecklistFilters = ({
       </div>
     ))
   }
-
+  const [showToggle, setShowToogle] = useState(false);
   return (
    
       <div className="panel-body">
@@ -124,8 +126,8 @@ const ChecklistFilters = ({
       
         <h3>Topic</h3>
         {makeList(topics.slice(0, 3), getCountForTopic)}
-        <details id="showmore">
-        <summary>Show more</summary>
+        <details onClick={() => setShowToogle(!showToggle)}>
+        <summary>{showToggle?"Show less":"Show more"}</summary>
         {makeList(topics.slice(3, topics.length), getCountForTopic)}</details>
   <br></br>
         <button

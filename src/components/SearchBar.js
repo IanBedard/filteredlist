@@ -8,7 +8,7 @@ function clear(){
 }
   return (
     <>
-          <h3>Search by Keyword(s)</h3>
+          <h3>Search by keyword(s)</h3>
     <div className="search-bar">
 
       <input
@@ -19,7 +19,7 @@ function clear(){
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
       />
-      <button className='btn btn-info' onClick={clear}>
+      <button className='btn btn-secondary' onClick={clear}>
         Clear
       </button>
     </div></>
