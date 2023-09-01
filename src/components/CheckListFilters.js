@@ -29,7 +29,7 @@ const ChecklistFilters = ({
       name: "Approvals",
     },
     {
-      id: "Ded",
+      id: "DED",
       name: "Deductions",
     },
     {

@@ -74,7 +74,7 @@ export default function App() {
       (!filterOptions.PEN ||
         item.Topic.toLowerCase().includes("pension and benefits")) &&
       (!filterOptions.TAX || item.Topic.toLowerCase().includes("tax"))&&
-      (!filterOptions.DED || item.Topic.toLowerCase().includes("deductions"))&&
+      (!filterOptions.DED || item.Topic.toLowerCase().includes("deductions")) &&
       (!filterOptions.PAY || item.Topic.toLowerCase().includes("pay statements"))&&
       (!filterOptions.APP || item.Topic.toLowerCase().includes("approvals"))&&
       (!filterOptions.MAN || item.Topic.toLowerCase().includes("manager self service"));
